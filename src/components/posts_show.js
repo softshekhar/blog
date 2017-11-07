@@ -17,6 +17,16 @@ class PostsShow extends Component {
     });
   }
 
+  onUpdateClick() {
+    console.log("hello brother1");
+    const { id } = this.props.match.params;
+    console.log("hello brother2");
+    this.props.updatePost(id, () => {
+
+      return this.props.history.push(`/posts/update/${id}`);
+    });
+  }
+
   render() {
     const { post } = this.props;
 
@@ -27,6 +37,12 @@ class PostsShow extends Component {
     return (
       <div>
         <Link to="/">Back To Index</Link>
+        <button
+          className="btn btn-primary pull-xs-right"
+          onClick={this.onUpdateClick.bind(this)}
+        >
+         Update Post
+        </button>
         <button
           className="btn btn-danger pull-xs-right"
           onClick={this.onDeleteClick.bind(this)}
